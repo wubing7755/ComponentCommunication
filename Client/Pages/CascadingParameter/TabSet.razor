@@ -1,0 +1,33 @@
+﻿<CascadingValue Value="this">
+    <ul>
+        @ChildContent
+    </ul>
+</CascadingValue>
+
+<div>
+    @ActiveTab?.ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent{ get; set; }
+
+    public Tab? ActiveTab{ get; private set; }
+
+    public void AddTab(Tab tab)
+    {
+        if (ActiveTab is null)
+        {
+            SetActiveTab(tab);
+        }
+    }
+
+    public void SetActiveTab(Tab tab)
+    {
+        if (ActiveTab != tab)
+        {
+            ActiveTab = tab;
+            StateHasChanged();
+        }
+    }
+}

@@ -1,0 +1,32 @@
+﻿<div @ref="moveableDiv"
+     style="height:30px;width:30px;background-color:aquamarine;cursor: move;"
+     @onpointerdown="OnPointerDownItem"
+     @onpointermove="OnPointerMoveItem"
+     @onpointerup="OnPointerUpItem">
+    AAA
+</div>
+
+@code{
+    private bool isDragging = false;
+
+    private ElementReference moveableDiv;
+
+    public void OnPointerDownItem(PointerEventArgs e)
+    {
+        isDragging = true;
+        Console.WriteLine($"{e.OffsetX} - {e.OffsetY}");
+    }
+
+    public void OnPointerMoveItem(PointerEventArgs e)
+    {
+        if (isDragging == true)
+        {
+
+        }
+    }
+
+    public void OnPointerUpItem(PointerEventArgs e)
+    {
+        isDragging = false;
+    }
+}

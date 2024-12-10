@@ -1,0 +1,10 @@
+﻿@inject INotifyService Ns
+
+<button @onclick="PublishEvent"> Publish Info </button>
+
+@code{
+    private void PublishEvent()
+    {
+        Ns.OnClick("Publisher 发布信息");
+    }
+}

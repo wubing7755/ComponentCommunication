@@ -35,4 +35,8 @@
     <None Remove="Pages\CascadingParameter\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\RectMatchDisplay\RectMatchDispaly.razor" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,17 @@
+﻿<div>
+    <button @onclick="OnClick">
+        Callback ParentComponent Function
+    </button>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback<string> OnClickCallback { get; set; }
+
+    private async Task OnClick(MouseEventArgs e)
+    {
+        string str = $"{e.ClientX} -- {e.ClientY}";
+        
+        await OnClickCallback.InvokeAsync(str);
+    }
+}

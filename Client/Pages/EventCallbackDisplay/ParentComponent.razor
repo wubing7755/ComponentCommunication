@@ -1,0 +1,18 @@
+﻿@page "/ParentComponent"
+
+<ChildComponent OnClickCallback="ChildCallbackFunc" />
+
+<p>
+    @_msg
+</p>
+
+@code {
+    string _msg = string.Empty;
+    
+    public void ChildCallbackFunc(string msg)
+    {
+        _msg = msg;
+        
+        StateHasChanged();
+    }
+}

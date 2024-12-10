@@ -16,7 +16,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\EventCallback\" />
+    <Compile Remove="Pages\ComponentParameter\**" />
+    <Compile Remove="Pages\CascadingParameter\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\ComponentParameter\**" />
+    <EmbeddedResource Remove="Pages\CascadingParameter\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\ComponentParameter\**" />
+    <Content Remove="Pages\CascadingParameter\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\ComponentParameter\**" />
+    <None Remove="Pages\CascadingParameter\**" />
   </ItemGroup>
 
 </Project>

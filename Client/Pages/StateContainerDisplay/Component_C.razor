@@ -1,4 +1,8 @@
-﻿@{
+﻿@inject IStateContainer<Player> Ns
+
+<h4>Component_C</h4>
+
+@{
     if (ChildComponentPlayers.Count > 0)
     {
         <table>
@@ -22,14 +26,33 @@
 }
 
 @code {
-    [Parameter]
     public List<Player> ChildComponentPlayers { get; set; } = new List<Player>();
     
-    [Parameter]
-    public EventCallback<Player> DeletePlayerCallback { get; set; }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Ns.OnChange += SubscribEvent;
+    }
+    
+    public void SubscribEvent(object players)
+    {
+        ChildComponentPlayers = (List<Player>)players;
+        
+        StateHasChanged();
+    }
 
+    public void Dispose()
+    {
+        Ns.OnChange -= SubscribEvent;
+    }
+    
     private void DeletePlayer(Player player)
     {
-        DeletePlayerCallback.InvokeAsync(player);
+        if (ChildComponentPlayers.Contains(player))
+        {
+            ChildComponentPlayers.Remove(player);
+            Ns.NotifyStateChanged(this.ChildComponentPlayers);
+            StateHasChanged();
+        }
     }
 }

@@ -2,13 +2,32 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Blazor 组件通信</h1>
+<h3>Blazor 组件通信 演示项目</h3>
 
-<ul>
-    <li><a href="ParameterDisplay">组件参数</a></li>
-    <li><a href="CascadingParameterDisplay">级联值和参数</a></li>
-    <li><a href="EventCallbackDisplay">EventCallback</a></li>
-    <li><a href="PublishSubscribDisplay">发布订阅模式</a></li>
-</ul>
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<table>
+    <tr>
+        <th scope="col">序号</th>
+        <th scope="col">组件通信方式</th>
+        <th scope="col">数据流通方向</th>
+    </tr>
+    <tr>
+        <th scope="row">1</th>
+        <td><a href="ParameterDisplay">组件参数</a></td>
+        <td>父组件向子组件传递信息</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td><a href="CascadingParameterDisplay">级联值和参数</a></td>
+        <td>祖先组件向任意后代组件传递信息</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td><a href="EventCallbackDisplay">事件回调</a></td>
+        <td>子组件向父组件传递信息</td>
+    </tr>
+    <tr>
+        <th scope="row">4</th>
+        <td><a href="StateContainerDisplay">状态容器</a></td>
+        <td>任意组件间传递信息</td>
+    </tr>
+</table>

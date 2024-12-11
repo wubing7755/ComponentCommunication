@@ -1,11 +1,10 @@
-﻿using ComponentCommunication.Client.Pages.ParameterDisplay;
-using ComponentCommunication.Shared;
+﻿using ComponentCommunication.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace ComponentCommunication.Client.Pages.CascadingParameterDisplay;
+namespace ComponentCommunication.Client.Pages.EventCallbackDisplay;
 
-public class CP_AncestorComponent : ComponentBase
+public class EC_ParentComponent : ComponentBase
 {
     private Players _players = new Players();
     private int PlayerNumber { get; set; } = 0;
@@ -29,6 +28,13 @@ public class CP_AncestorComponent : ComponentBase
         }
     }
 
+    public void DeletePlayer(Player player)
+    {
+        _players.RemovePlayer(player);
+        
+        StateHasChanged();
+    }
+    
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         base.BuildRenderTree(builder);
@@ -36,7 +42,7 @@ public class CP_AncestorComponent : ComponentBase
         int sequence = 0;
         
         builder.OpenElement(sequence ++, "h3");
-        builder.AddContent(sequence ++, "级联值和参数");
+        builder.AddContent(sequence ++, "事件回调");
         builder.CloseElement();
         
         builder.OpenElement(sequence ++, "label");
@@ -50,14 +56,9 @@ public class CP_AncestorComponent : ComponentBase
         builder.AddAttribute(sequence ++, "placeholder", "Player's count must be lower than 10");
         builder.CloseElement();
         
-        builder.OpenComponent<CascadingValue<Players>>(sequence ++);
-        builder.AddAttribute(sequence++, "Value", _players);
-        builder.AddAttribute(sequence++, "Name", "Players");
-        builder.AddAttribute(sequence++, "ChildContent", (RenderFragment)(builder2 =>
-        {
-            builder2.OpenComponent<CP_ParentComponent>(sequence++);
-            builder2.CloseComponent();
-        }));
+        builder.OpenComponent<EC_ChildComponent>(sequence ++);
+        builder.AddAttribute(sequence ++, "Players", _players);
+        builder.AddAttribute(sequence, "DeletePlayerCallback", EventCallback.Factory.Create<Player>(this, DeletePlayer));
         builder.CloseComponent();
     }
 }

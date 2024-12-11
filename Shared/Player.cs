@@ -2,8 +2,9 @@
 
 public class Player : ObjectBase
 {
-    public Player(string name, int initialHealth = 100) : base(name)
+    public Player(string name, int initialHealth = 100)
     {
+        Name = name;
         Health = initialHealth;
     }
 
@@ -14,7 +15,7 @@ public class Player : ObjectBase
         get => _name;
         set
         {
-            if (value.Length <= 10)
+            if (string.IsNullOrEmpty(value) || value.Length <= 10)
             {
                 _name = value;
             }
@@ -25,7 +26,7 @@ public class Player : ObjectBase
         }
     }
     
-    public int Health { get; private set; }
+    public virtual int Health { get; protected set; }
     
-    public bool IsAlive => Health > 0;
+    public virtual bool IsAlive => Health > 0;
 }

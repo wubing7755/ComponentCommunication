@@ -5,9 +5,4 @@ public abstract class ObjectBase
     public Guid Id { get; } = Guid.NewGuid();
     
     public abstract string Name { get; set; }
-
-    protected ObjectBase(string name)
-    {
-        Name = name;
-    }
 }

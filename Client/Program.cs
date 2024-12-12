@@ -16,7 +16,7 @@ namespace ComponentCommunication.Client
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddSingleton<IStateContainer<Player>, StateContainer>();
+            builder.Services.AddSingleton(typeof(IStateContainer<>), typeof(StateContainer<>));
             
             await builder.Build().RunAsync();
         }

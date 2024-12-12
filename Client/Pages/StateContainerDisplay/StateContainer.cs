@@ -2,10 +2,11 @@
 
 namespace ComponentCommunication.Client.Pages.StateContainerDisplay;
 
-public class StateContainer : IStateContainer<Player>
+public class StateContainer<T> : IStateContainer<T>
 {
-    public List<Player> Items { get; set; }
+    public List<T> Items { get; set; }
     
-    public event Action<List<Player>>? OnChange;
-    public void NotifyStateChanged(List<Player> players) => OnChange?.Invoke(players);
+    public event Action<List<T>>? OnChange;
+    
+    public void NotifyStateChanged(List<T> items) => OnChange?.Invoke(items);
 }

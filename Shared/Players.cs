@@ -26,6 +26,18 @@ public class Players
         }
     }
 
+    public void InitializePlayers(List<Player> players)
+    {
+        int count = players.Count;
+        if(count > 10) throw new ArgumentException("Players count must be less than 10");
+        
+        Items = new List<Player>(count);
+        foreach (var player in players)
+        {
+            Items.Add(player);
+        }
+    }
+    
     public void AddPlayer(Player player)
     {
         Items.Add(player);

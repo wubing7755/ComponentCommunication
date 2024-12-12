@@ -28,6 +28,8 @@
   <ItemGroup>
     <Content Remove="Pages\ComponentParameter\**" />
     <Content Remove="Pages\CascadingParameter\**" />
+    <Content Remove="Pages\StateContainerDisplay\Component_B.razor" />
+    <Content Remove="Pages\StateContainerDisplay\Component_C.razor" />
   </ItemGroup>
 
   <ItemGroup>
